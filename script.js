@@ -114,20 +114,26 @@ var upperCasedCharacters = [
 
 
 function getPasswordOptions() {
-  var userChoice = prompt("Please choose a number between 8 - 128. The password will not work if you chose a bigger/smaller number.");
-  userChoice = Number(userChoice);
-  var passwordLenght = userChoice;
-  var password = " ";
-  
-if(userChoice < 8) {
+
+  var password = {
+    length: " ",
+    uppercase: true,
+    lowercase: true,
+    special: true,
+    numeric: true
+  };
+
+  var length = prompt("Please choose a number between 8 - 128. The password will not work if you chose a bigger/smaller number.");
+  length = Number(length);
+
+if(length < 8) {
   alert("The number chosen it's to low. Choose another one. ");
-} else if (userChoice > 128) {
-  alert("The number chosen it's to big. Chose another one.")
-} else (userChoice >= 8, userChoice <= 128)
+} else if (length > 128) {
+  alert("The number chosen it's to big. Choose another one.");
+} else (length >= 8, length <= 128)
   prompt = ("That's great! Please chose uppercase/lowercase/symbols or numbers?");
  
-  
-console.log(userChoice);
+console.log(length);
 
 
   // return Math.floor(Math.random(passwordLenghts) * allCharacters.length);
@@ -154,11 +160,12 @@ console.log(userChoice);
   // //   though it would be dodgy, append the length
   // return { length: 50, lowercase: true, uppercase: false, numeric: true, special: false };
 }
+
 getPasswordOptions();
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-  ['a','b','c','d','e']
+  
    // build an array of all possible options based on user preferences
    // user wants 20 characters in their password
    //   upper/lower/numeric ==> 26 + 26 + 10 = 62
