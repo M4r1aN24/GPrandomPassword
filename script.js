@@ -114,14 +114,11 @@ if(length < 8) {
 console.log(length);
 
 while(!password.uppercase && !password.lowercase && !password.special && !password.numeric ){
-  alert("Please make sure you pick one of the options");
   password.lowercase = confirm("Would you like lowercase characters included? ");
-
   password.uppercase = confirm("Would you like uppercase characters included? ");
-
   password.special = confirm("Would you like special characters included? ");
-
   password.numeric = confirm("Would you like numeric characters included? ");
+  alert("Please make sure you pick one of the options");
   console.log(password);
 }
  
@@ -150,8 +147,6 @@ function getRandom() {
    // build an array of all possible options based on user preferences
    //   upper/lower/numeric ==> 26 + 26 + 10 = 62
 }
-
-
 
 // Function to generate password with user input
 function generatePassword() {
