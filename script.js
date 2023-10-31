@@ -116,11 +116,14 @@ if(length < 8) {
 }
 
 while(!password.uppercase && !password.lowercase && !password.special && !password.numeric ){
+
+  alert("Please make sure you pick one of the options");
+  
   password.lowercase = confirm("Would you like lowercase characters included? ");
   password.uppercase = confirm("Would you like uppercase characters included? ");
   password.special = confirm("Would you like special characters included? ");
   password.numeric = confirm("Would you like numeric characters included? ");
-  alert("Please make sure you pick one of the options");
+  
   
 }
 
