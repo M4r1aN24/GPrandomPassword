@@ -87,7 +87,8 @@ var upperCasedCharacters = [
   'Y',
   'Z'
 ];
-
+var generate = document.getElementById("generate");
+var passwordText = document.getElementById("password");
 var password = {
   length: 0,
   uppercase: false,
@@ -95,6 +96,8 @@ var password = {
   special: false,
   numeric: false
 };
+
+var finalPassword = '';
 var allCharacters = [];
 
 // Function to prompt user for password options
@@ -111,7 +114,7 @@ if(length < 8) {
   alert("That's great! Now let's go to the next step");
 }
 
-console.log(length);
+// console.log(length);
 
 while(!password.uppercase && !password.lowercase && !password.special && !password.numeric ){
   password.lowercase = confirm("Would you like lowercase characters included? ");
@@ -119,9 +122,8 @@ while(!password.uppercase && !password.lowercase && !password.special && !passwo
   password.special = confirm("Would you like special characters included? ");
   password.numeric = confirm("Would you like numeric characters included? ");
   alert("Please make sure you pick one of the options");
-  console.log(password);
+  // console.log(password);
 }
- 
 
  if(password.uppercase === true){
   allCharacters = allCharacters.concat(upperCasedCharacters);
@@ -135,45 +137,32 @@ while(!password.uppercase && !password.lowercase && !password.special && !passwo
  if(password.special === true){
   allCharacters = allCharacters.concat(specialCharacters);
  } 
-  return password;
+
+ generatePassword(password);
 }
 
-generatePassword();
+
 
 // Function for getting a random element from an array
 function getRandom() {
   var randomNumber = Math.floor(Math.random() * allCharacters.length );
-  return allCharacters [randomNumber]
-   // build an array of all possible options based on user preferences
-   //   upper/lower/numeric ==> 26 + 26 + 10 = 62
+  return allCharacters[randomNumber]
 }
 
 // Function to generate password with user input
-function generatePassword() {
+function generatePassword(password) {
+console.log("Hello");
+ var endArray = [];
 
-  for (let index = 0; index < array.length; index++) {
-    const element = array[index];
-    
+  for (var i= 0; i < password.length; i++) {
+    var elements = getRandom(allCharacters);
+    endArray.push(elements);
   }
-  
-  // get the password options
+  finalPassword = endArray.join('')
+
+  passwordText.textContent = finalPassword;
+  return endArray.join('')
   var options = getPasswordOptions();
-console.log(getRandom());
-  // connect all the arrays that the user said they want to use
-  // use conditionals to choose which arrays to concatenate
-  // for example, if they want the special characters and the lowercase characters,
-  //    put those arrays together
-
-  // use the user's input for length to generate that number of random elements from the array
-  // MAYBE TOO COMPLICATED: divide the user requested length by the number of different character classes so that
-  //    the password is evenly divided among the types of characters
-  // BUT CONSIDER
-  //    How do we ensure that the password contains at least one of each character type
-  // get the random one
-
-
-  // need to loop => the number of times the user requested for a length of a password!
-
-  // this function must RETURN the generated password as a string
-
 }
+
+generate.addEventListener("click", getPasswordOptions);
