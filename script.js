@@ -87,6 +87,7 @@ var upperCasedCharacters = [
   'Y',
   'Z'
 ];
+
 var generate = document.getElementById("generate");
 var passwordText = document.getElementById("password");
 var password = {
@@ -114,15 +115,13 @@ if(length < 8) {
   alert("That's great! Now let's go to the next step");
 }
 
-// console.log(length);
-
 while(!password.uppercase && !password.lowercase && !password.special && !password.numeric ){
   password.lowercase = confirm("Would you like lowercase characters included? ");
   password.uppercase = confirm("Would you like uppercase characters included? ");
   password.special = confirm("Would you like special characters included? ");
   password.numeric = confirm("Would you like numeric characters included? ");
   alert("Please make sure you pick one of the options");
-  // console.log(password);
+  
 }
 
  if(password.uppercase === true){
@@ -140,8 +139,6 @@ while(!password.uppercase && !password.lowercase && !password.special && !passwo
 
  generatePassword(password);
 }
-
-
 
 // Function for getting a random element from an array
 function getRandom() {
